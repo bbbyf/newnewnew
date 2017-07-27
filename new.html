@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        li{line-height: 50px;
+            text-align: center;
+            width: 100px;
+            height: 50px;
+            background-color:yellow;
+            color: red;
+            font-size: 25px;}
+        .news{display: block;}
+        .old{display: none;}
+        div{
+            height: 25px;
+            line-height: 25px;
+          }
+    </style>
+
+</head>
+<input type="button" id="btn" value="开始"/>
+    <ul id="uu">
+        <li class="news">向禹</li>
+        <li class="old">白宇飞</li>
+        <li class="old">丁丹丹</li>
+        <li class="old">肖子玉</li>
+        <li class="old">蔡聪</li>
+        <li class="old">胡凡凡</li>
+        <li class="old">温涛</li>
+        <li class="old">余佳攀</li>
+        <li class="old">周琦</li>
+    </ul>
+    <div id="t1">宇宙最强小组点名系统辣眼睛马杀鸡版本</div>
+<script>
+    <!-- -->
+    function ccc(ele,old,news){
+        ele.className=ele.className.replace(old,news);
+    };
+    var btn=document.getElementById("btn");
+    var uu=document.getElementById("uu");
+    var t1=document.getElementById("t1");
+    var li= uu.getElementsByTagName("li");
+    var b=true;
+    var y=0;
+    var x=0;
+    var g=0;
+    var r=true;
+    var l=true;
+    function dm() {
+        var b=Math.floor(Math.random()*li.length);
+        return b;
+    }
+    function dc(){
+        if(b){
+            document.body.style.backgroundColor="black";
+            this.value="关灯";
+        }else{
+            document.body.style.backgroundColor="white";
+            this.value="开灯"
+        }
+        b=!b;
+    }function df(){
+        if(g===0){
+            t1.style.color="red";
+            g=1;
+        }else{
+            t1.style.color="yellow";
+            g=0;
+        }
+        b=!b;
+    }
+     function ff(){//随机数，随机点名，y轴
+         var random=parseInt(Math.random()*600);
+         return random;
+     }
+    function fff(){//随机数，随机点名，y轴
+        var random=parseInt(Math.random()*1300);
+        return random;
+    }
+    function g0(){//判断y轴
+        if(y<=0){
+            l=true
+        }
+       return l;
+    }
+    function g1(){//判断X轴
+        if(x<=0){
+            r=true
+        }
+        return r;
+    }
+    function zz(){//y轴坐标
+        if(y<=620&l==true){
+            y+=5;
+        }
+        else{
+            y-=5;
+            l=false;
+        }
+        g0()
+        return y;
+    };
+
+    function zzz(){//x轴坐标
+        if(x<=1040&r==true){
+            x+=5;
+        }
+        else{
+                x-=5;
+                r=false;
+            }
+        g1();
+        return x;
+        }
+
+    function piao(){//X,Y轴移动
+        t1.style.position="absolute"
+        t1.style.top=zz()+"px";
+        t1.style.left=zzz()+"px";
+        df();
+        console.log(x);
+        console.log(y);
+    }
+    function ggg(){//随机点名+移动
+        a=dm();
+        for(var i=0;i<li.length;i++){
+            var b=li[i];
+            b.style.position="absolute"
+            b.style.top=ff()+"px";
+            b.style.left=fff()+"px";
+            if(b.className==="news"){
+                ccc(b,"news","old");
+            }
+        }
+        ccc(li[a],"old","news" )
+    };
+    var int;
+    var ddd;
+    var ttt;
+    var sss;
+    btn.onclick=function(){
+        if(btn.value==="开始"){
+            btn.value="结束"
+            int=setInterval("ggg()",1);
+//            ddd=setInterval("dc()",1);
+            sss=setInterval("piao()",100);
+            ttt=setInterval("df()",1);
+
+        }
+        else if(btn.value==="结束"){
+            btn.value="开始";
+            clearInterval(int);
+            clearInterval(ddd);
+            clearInterval(ttt);
+//            clearInterval(sss);
+
+        }
+
+    }
+
+</script>
+</body>
+</html>
